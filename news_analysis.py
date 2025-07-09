@@ -1,9 +1,10 @@
 import nltk
 from nltk.corpus import stopwords
 from nltk.sentiment import SentimentIntensityAnalyzer
-
-
-
+import nltk
+nltk.download('vader_lexicon')
+nltk.download('stopwords')
+nltk.download('punkt')
 
 def analyze_sentiment(text):
     # Initialize the sentiment analyzer
