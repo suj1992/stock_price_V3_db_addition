@@ -35,14 +35,16 @@
         </tr>
     </thead>
     <tbody>
+        {% for record in all_news_ui %}
             <tr>
-                <td>{{news}}</td>
-                <td>{{neg}}</td>
-                <td>{{neu}}</td>
-                <td>{{pos}}</td>
-                <td>{{over_all}}</td>
+                <td>{{ record.news }}</td>
+                <td>{{ record.neg_no }}</td>
+                <td>{{ record.neu_no }}</td>
+                <td>{{ record.pos_no }}</td>
+                <td>{{ record.overall_no }}</td>
                 </td>
             </tr>
+        {% endfor %}
     </tbody>
 </table>
 
