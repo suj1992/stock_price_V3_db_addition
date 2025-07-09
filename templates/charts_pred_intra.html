@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Prediction Results</title>
+    <style>
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>Intraday</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Entry</th>
+            <th>Exit</th>
+            <th>Quantity</th>
+            <th>Target</th>
+            <th>Total Amount</th>
+            <th>Risk</th>
+            <th> Name </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for trade in trades %}
+            <tr>
+                <td>{{ trade.entry_price }}</td>
+                <td>{{ trade.exit_price }}</td>
+                <td>{{ trade.quant }}</td>
+                <td>{{ trade.target_price }}</td>
+                <td>{{ trade.total_amount }}</td>
+                <td>{{ trade.risk }}</td>
+                <td>{{ trade.stock_name }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</body>
+</html>
+

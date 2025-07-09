@@ -1,0 +1,6 @@
+flask == 3.0.3
+nltk == 3.8.1
+selenium == 4.21.0
+webdriver_manager == 4.0.1
+yfinance == 0.2.40
+flask_sqlalchemy 

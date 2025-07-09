@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Analysis</title>
+    <style>
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>News Analysis</h2>
+<table>
+    <thead>
+        <tr>
+            <th>News</th>
+            <th>Negetive</th>
+            <th>Nutral</th>
+            <th>Positive</th>
+            <th>Overall</th>
+        </tr>
+    </thead>
+    <tbody>
+            <tr>
+                <td>{{news}}</td>
+                <td>{{neg}}</td>
+                <td>{{neu}}</td>
+                <td>{{pos}}</td>
+                <td>{{over_all}}</td>
+                </td>
+            </tr>
+    </tbody>
+</table>
+
+
+
+</body>
+</html>
+

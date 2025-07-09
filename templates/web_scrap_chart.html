@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Prediction Results</title>
+    <style>
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h2>{{output_file}}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Sector</th>
+                    <th>Instrument</th>
+                    <th>Assets</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for index, row in df.iterrows() %}
+                    <tr>
+                        <td>{{ row['Name'] }}</td>
+                        <td>{{ row['Sector'] }}</td>
+                        <td>{{ row['Instrument'] }}</td>
+                        <td>{{ row['Assets'] }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h1>Web Scraping Result</h1>
+        <p>The CSV file has been generated: <strong>{{ output_file_new }}.csv</strong></p>
+        <a href="/download_csv/{{ output_file_new }}.csv">Download CSV</a>
+
+
+
+
+
+</body>
+</html>
+

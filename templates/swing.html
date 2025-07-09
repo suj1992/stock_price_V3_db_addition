@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Swing</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        form {
+            width: 300px; /* Set the width of the form */
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        label {
+            display: block; /* Make labels block-level elements */
+            margin-bottom: 10px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Ensure padding and border are included in the width */
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+<form action="/stock_pred_swing" method="post">
+  <label for="fname">Entry</label>
+  <input type="text" id="fname" name="fname" value="">
+  
+  <label for="lname">Exit</label>
+  <input type="text" id="lname" name="lname" value="">
+
+  <label for="lname">Stock Name</label>
+  <input type="text" id="stock_name" name="stock_name" value="">
+  
+  <input type="submit" value="Submit">
+</form> 
+
+</body>
+</html>
