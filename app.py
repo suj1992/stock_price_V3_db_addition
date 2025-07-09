@@ -43,6 +43,15 @@ class intra_day_trade(db.Model):
     stock_name = db.Column(db.String(50), nullable=False)
     date_time = db.Column(db.String(50), nullable=False)
 
+class news_analysis_table(db.Model):
+    sno = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    news = db.Column(db.String, nullable=False)
+    neg_no = db.Column(db.Float, nullable=False)
+    neu_no = db.Column(db.Float, nullable=False)
+    pos_no = db.Column(db.Float, nullable=True)
+    overall_no = db.Column(db.Float, nullable=False)
+    date_time = db.Column(db.String(50), nullable=False)
+
 
 
 @app.route("/")
@@ -107,8 +116,7 @@ def stock_pred_swing():
         trades = swing_trade.query.all()
 
     # Render template with calculated values
-    return render_template('charts_pred_swing.html', entry_1=entry_1, exit_1=exit_1, quant=quant, target=target, total_amount=total_amount,
-                            risk=risk, params=params,stock_name=stock_name, trades=trades,date_time = current_datetime )
+    return render_template('charts_pred_swing.html', trades=trades)
 
 
 
@@ -117,14 +125,23 @@ def news_sentiment():
     if request.method == 'POST':
         news = request.form.get('blog_content')
         
+
+        current_datetime = datetime.now()
+        count = news_analysis_table.query.count()
+        new_sl_no = count + 1
         news_analysis= analyze_sentiment(news)
+        
         neg = news_analysis[0]
         neu = news_analysis[1]
         pos = news_analysis[2]
         over_all = news_analysis[3]
-        
-        
-    return render_template('news_chart.html', news = news, neg= neg, neu = neu, pos = pos, over_all = over_all, params=params )
+
+        new_entry = news_analysis_table(sno = new_sl_no, news = news, neg_no= neg, neu_no = neu, pos_no = pos, overall_no =over_all, date_time = current_datetime)
+        db.session.add(new_entry)
+        db.session.commit()
+        all_news = news_analysis_table.query.all()
+
+    return render_template('news_chart.html',all_news_ui = all_news)
 
 @app.route("/web_scarp_mutual", methods=['POST'])
 def web_scarp_mutual():
