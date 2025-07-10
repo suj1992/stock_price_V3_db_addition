@@ -123,19 +123,18 @@ def stock_pred_swing():
 @app.route("/news_sentiment", methods=['POST'])
 def news_sentiment():
     if request.method == 'POST':
+        # data collectd from UI
         news = request.form.get('blog_content')
-        
-
         current_datetime = datetime.now()
         count = news_analysis_table.query.count()
         new_sl_no = count + 1
+        # call the function
         news_analysis= analyze_sentiment(news)
-        
         neg = news_analysis[0]
         neu = news_analysis[1]
         pos = news_analysis[2]
         over_all = news_analysis[3]
-
+        #Enrty the data into database
         new_entry = news_analysis_table(sno = new_sl_no, news = news, neg_no= neg, neu_no = neu, pos_no = pos, overall_no =over_all, date_time = current_datetime)
         db.session.add(new_entry)
         db.session.commit()
